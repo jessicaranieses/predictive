@@ -1,0 +1,42 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="en">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>Login Prediction</title>\
+</head>\
+<body>\
+\
+<div id="predictionMessage"></div>\
+\
+<script>\
+    function getPrediction() \{\
+        const currentHour = new Date().getHours(); // Gets the current hour (0-23)\
+\
+        if (5 <= currentHour && currentHour < 8) \{\
+            return "Rise and shine! We predict you'll excel in our early morning live sessions!";\
+        \} else if (8 <= currentHour && currentHour < 12) \{\
+            return "Morning person detected! You might enjoy our data visualization module!";\
+        \} else if (12 <= currentHour && currentHour < 17) \{\
+            return "Afternoon explorer! Our regression analysis module in the afternoon will be your favorite!";\
+        \} else if (17 <= currentHour && currentHour < 21) \{\
+            return "Evening learner! Our evening discussions on machine learning will intrigue you!";\
+        \} else \{\
+            return "Based on your login time, we predict you're a night owl and will love our module on time series analysis!";\
+        \}\
+    \}\
+\
+    // Display the prediction message\
+    document.getElementById('predictionMessage').innerText = getPrediction();\
+</script>\
+\
+</body>\
+</html>\
+}
