@@ -4,10 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 50px;
+            text-align: center;
+        }
+
+        div {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        label, input {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<div id="predictionMessage"></div>
+<div>
+    <label for="studentName">Enter your name: </label>
+    <input type="text" id="studentName">
+    <button onclick="displayPrediction()">Submit</button>
+</div>
+
+<div id="output"></div>
 
 <script>
     function getPrediction() {
@@ -26,8 +66,17 @@
         }
     }
 
-    // Display the prediction message
-    document.getElementById('predictionMessage').innerText = getPrediction();
+    function displayPrediction() {
+        const name = document.getElementById('studentName').value;
+        const prediction = getPrediction();
+        const message = `Hello, ${name}! Based on your login time, ${prediction}`;
+        
+        // Store name and login time in local storage
+        const currentTime = new Date().toLocaleTimeString();
+        localStorage.setItem(name, currentTime);
+
+        document.getElementById('output').innerText = message;
+    }
 </script>
 
 </body>
