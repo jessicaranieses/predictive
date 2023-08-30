@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 50px;
+            text-align: center;
+        }
+
+        div {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        label, input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <label for="studentName">Enter your name: </label>
+    <input type="text" id="studentName">
+    <button onclick="displayPrediction()">Submit</button>
+</div>
+
+<div id="output"></div>
+
+<script>
+    function getPrediction() {
+        const currentHour = new Date().getHours(); // Gets the current hour (0-23)
+        const currentTime = new Date().toLocaleTimeString();
+
+        if (5 <= currentHour && currentHour < 8) {
+            return `You logged in at ${currentTime}. Early bird analyst! 🌅 You're the one who's always ahead of the curve, probably sipping on your third coffee while others are just waking up. #MorningHustler`;
+        } else if (8 <= currentHour && currentHour < 12) {
+            return `You logged in at ${currentTime}. The 'I've got a chart for that' analyst. ☕️ Morning meetings? You've got a graph to explain everything. #DataDrivenMornings`;
+        } else if (12 <= currentHour && currentHour < 17) {
+            return `You logged in at ${currentTime}. Afternoon data detective! 🕵️‍♂️ You're the Sherlock of business problems, finding insights others might miss. #AfternoonInsight`;
+        } else if (17 <= currentHour && currentHour < 21) {
+            return `You logged in at ${currentTime}. Evening brainstormer! 🌙 While others wind down, you're cooking up the next big business strategy. #TwilightThinker`;
+        } else {
+            return `You logged in at ${currentTime}. Night owl visionary! 🦉 While the world sleeps, you're plotting world domination... one spreadsheet at a time. #MidnightMogul`;
+        }
+    }
+
+    function displayPrediction() {
+        const name = document.getElementById('studentName').value;
+        const prediction = getPrediction();
+        const message = `Hello, ${name}! ${prediction}`;
+        
+        // Store name and login time in local storage
+        localStorage.setItem(name, new Date().toLocaleTimeString());
+
+        document.getElementById('output').innerText = message;
+    }
+</script>
+
+</body>
+</html>
